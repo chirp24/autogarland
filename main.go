@@ -190,7 +190,7 @@ func (fm *FurniMover) handleItemPacket(packetStr, actionType string) {
 		fm.furniID = newID
 		fm.pos = newPos
 		// fm.AddLogMsg(fmt.Sprintf("%s: ID %s, Position: w=%d,%d l=%d,%d %s",
-			actionType, fm.furniID, fm.pos.W1, fm.pos.W2, fm.pos.L1, fm.pos.L2, fm.pos.Direction))
+		// actionType, fm.furniID, fm.pos.W1, fm.pos.W2, fm.pos.L1, fm.pos.L2, fm.pos.Direction))
 		fm.moveToNextPredefinedPosition()
 	}
 }
