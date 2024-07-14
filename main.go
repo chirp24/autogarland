@@ -85,13 +85,13 @@ func (fm *FurniMover) AddLogMsg(msg string) {
 	if len(fm.log) > 100 {
 		fm.log = fm.log[1:]
 	}
-	fmt.Println(strings.Join(fm.log, "\n"))
+	// fmt.Println(strings.Join(fm.log, "\n"))
 }
 
 func showMsg(msg string) {
 	self := roomMgr.EntityByName(profileMgr.Name)
 	if self == nil {
-		fmt.Println("self not found.")
+		// fmt.Println("self not found.")
 		return
 	}
 	ext.Send(in.CHAT, self.Index, msg)
@@ -189,7 +189,7 @@ func (fm *FurniMover) handleItemPacket(packetStr, actionType string) {
 	if newID != fm.furniID || newPos != fm.pos {
 		fm.furniID = newID
 		fm.pos = newPos
-		fm.AddLogMsg(fmt.Sprintf("%s: ID %s, Position: w=%d,%d l=%d,%d %s",
+		// fm.AddLogMsg(fmt.Sprintf("%s: ID %s, Position: w=%d,%d l=%d,%d %s",
 			actionType, fm.furniID, fm.pos.W1, fm.pos.W2, fm.pos.L1, fm.pos.L2, fm.pos.Direction))
 		fm.moveToNextPredefinedPosition()
 	}
@@ -204,7 +204,7 @@ func (fm *FurniMover) handleAddStripItem(e *g.Intercept) {
 		parts := strings.Split(packetContent, " ")
 		if len(parts) >= 3 {
 			fm.furniID = parts[2]
-			fm.AddLogMsg(fmt.Sprintf("Captured furni ID: %s", fm.furniID))
+			// fm.AddLogMsg(fmt.Sprintf("Captured furni ID: %s", fm.furniID))
 		}
 		return
 	}
@@ -213,7 +213,7 @@ func (fm *FurniMover) handleAddStripItem(e *g.Intercept) {
 
 func (fm *FurniMover) moveToNextPredefinedPosition() {
 	if fm.positionIndex >= len(fm.predefinedPositions) {
-		fm.AddLogMsg("No more predefined positions available.")
+		// fm.AddLogMsg("No more predefined positions available.")
 		// Prompt player to place garlands on selector box
 		go showMsg(" > > Place garlands on selector box? Y/N < <")
 		return
@@ -242,7 +242,7 @@ func (fm *FurniMover) moveWallItem() {
 	placestuffData := fmt.Sprintf(":w=%d,%d l=%d,%d %s", fm.pos.W1, fm.pos.W2, fm.pos.L1, fm.pos.L2, fm.pos.Direction)
 	numFurniID, _ := strconv.Atoi(fm.furniID)
 	fm.ext.Send(g.Out.Id("MOVEITEM"), numFurniID, placestuffData)
-	fm.AddLogMsg(fmt.Sprintf("Moved item ID %s to predefined position: w=%d,%d l=%d,%d %s", fm.furniID, fm.pos.W1, fm.pos.W2, fm.pos.L1, fm.pos.L2, fm.pos.Direction))
+	// fm.AddLogMsg(fmt.Sprintf("Moved item ID %s to predefined position: w=%d,%d l=%d,%d %s", fm.furniID, fm.pos.W1, fm.pos.W2, fm.pos.L1, fm.pos.L2, fm.pos.Direction))
 }
 
 func main() {
