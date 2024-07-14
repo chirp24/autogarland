@@ -16,7 +16,7 @@ import (
 
 var ext = g.NewExt(g.ExtInfo{
 	Title:       "autogarland",
-	Description: "temp",
+	Description: "An extension to automatically outline your room using garlands.",
 	Author:      "chirp24",
 	Version:     "1.0",
 })
@@ -61,7 +61,6 @@ func NewFurniMover(ext *g.Ext) *FurniMover {
 			{L1: -458, L2: 313, W1: 9, W2: 0},
 			{L1: -511, L2: 286, W1: 9, W2: 0},
 			{L1: -558, L2: 263, W1: 9, W2: 0},
-			// Add more predefined positions here
 		},
 	}
 }
